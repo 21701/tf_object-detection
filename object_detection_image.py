@@ -122,4 +122,3 @@ for image_path in IMAGE_PATHS:
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
