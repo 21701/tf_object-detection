@@ -14,6 +14,8 @@ from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as viz_utils
 
+import time
+
 # 내 로컬에 설치된 레이블 파일을, 인덱스와 연결시킨다.
 PATH_TO_LABELS = 'C:\\Users\\5-20\\Documents\\TensorFlow\\models\\research\\object_detection\\data\\mscoco_label_map.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS)
@@ -105,13 +107,18 @@ else :
             # frame 이 이미지에 대한 넘파이 어레이 이므로
             # 이 frame 을 오브젝트 디텔션 한다.
 
-    
             # 학습용으로, 돋영상으로 저장하는 코드를
             # 수정하세요 
+
+            start_time = time.time()
 
             # save_inference(detection_model, frame)
 
             show_inference(detection_model, frame)
+
+            end_time = time.time()
+
+            print('연산에 걸린시간', str(end_time-start_time))
 
             if cv2.waitKey(27) & 0xFF == 27 :
                 break
